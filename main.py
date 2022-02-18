@@ -43,34 +43,21 @@ def main():
         user = update.message.from_user
         ust.user_id = user['id']
         update.message.reply_text(
-            f"здравуствуйте {user['username']}, этот бот позволит получить от нашего курса ещё больше удовольствия! \nПожалуйста напишите /help чтобы увидеть все доступные команды")
+            f"з"
+            )
 
     updater.dispatcher.add_handler(CommandHandler('start', start))
 
     @send_action(ChatAction.TYPING)
     def help(update: Update, context: CallbackContext):
-        update.message.reply_text("""Доступные команды:
-        /credits - Наши соцсети
-        /reg - Регистрация, чтобы удостовериться что Вы член курса
-        /gmail - To get gmail URL
-        /geeks - To get the GeeksforGeeks URL""")
+        update.message.reply_text("""""")
         if ust.isRegistered:
-            update.message.reply_text("""Команды, доступные как участнику курса:
-            /credits - Наши соцсети
-            /reg - Регистрация, чтобы удостовериться что Вы член курса
-            /gmail - To get gmail URL
-            /geeks - To get the GeeksforGeeks URL""")
+            update.message.reply_text("""""")
         print('You talk with user {} and his user ID: {} '.format(user['username'], user['id']))
 
     updater.dispatcher.add_handler(CommandHandler('help', help))
 
 
-    def get_credits(update: Update, context: CallbackContext):
-        update.message.reply_text(
-            "СЮДА НАПИСАТЬ ВСЕ СОЦСЕТИ"
-            )
-
-    updater.dispatcher.add_handler(CommandHandler('credits', get_credits))
 
     @send_action(telegram.constants.CHATACTION_TYPING)
     def registration(update: Update, context: CallbackContext):
@@ -78,7 +65,7 @@ def main():
         ust.isRegistrating = True
         #print(type(telegram.Chat.id))
         print(update['message']['chat']['id'])
-        update.message.reply_text("Пожалуйста, напишите Ваш номер и фамилию. Эти данные нужны только чтобы узнать являетесь ли Вы участником. \nДанную процедуру надо проделать только один раз")
+        update.message.reply_text("")
 
     updater.dispatcher.add_handler(CommandHandler('reg', registration))
 
